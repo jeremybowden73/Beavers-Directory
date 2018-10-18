@@ -66,8 +66,9 @@ nav {
     margin: 50px 0 10px;
 }
 
-.padding-right {
-    padding-right: 2rem;
+.word-emphasis {
+    padding-left: 2rem;
+    font-weight: bold;
 }
 
 
