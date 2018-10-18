@@ -45,7 +45,7 @@ namespace BeaversDirectory.Controllers
                 // if it's good, redirect to the Index action method in the Home Controller
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home", loginViewModel);
                 }
             }
 

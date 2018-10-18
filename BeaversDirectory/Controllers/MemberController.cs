@@ -1,4 +1,5 @@
 ﻿using BeaversDirectory.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace BeaversDirectory.Controllers
 {
+    //[Authorize] means only signed-in users to access this Controller and it's methods
+    [Authorize]
     public class MemberController : Controller
     {
         // create local instances of Interfaces

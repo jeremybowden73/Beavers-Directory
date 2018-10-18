@@ -24,9 +24,18 @@
                     <span class="details">
                         <a asp-controller="Home" asp-action="Details" asp-route-id="@Beaver.Id" class="btn btn-success btn-xs" role="button">Details</a>
                     </span>
-                    <span>
-                        <a asp-controller="Member" asp-action="Edit" asp-route-id="@Beaver.Id" class="btn btn-warning btn-xs" role="button">Edit (log-in required)</a>
-                    </span>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <span>
+                            <a asp-controller="Member" asp-action="Edit" asp-route-id="@Beaver.Id" class="btn btn-warning btn-xs" role="button">Edit</a>
+                        </span>
+                    }
+                    else
+                    {
+                        <span>
+                            <a asp-controller="Member" asp-action="Edit" asp-route-id="@Beaver.Id" class="btn btn-warning btn-xs" role="button">Edit (log-in required)</a>
+                        </span>
+                    }
                 </div>
             </div>
         </div>
