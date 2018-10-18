@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@*   @inject allows dependancy injection in Razor code; here of a SignInManager object   *@
+@inject SignInManager<IdentityUser> SignInManager
+
+
+@model BeaversDirectory.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h3 class="text-center">@Model.Title</h3>
+
+<div>
+    @foreach (var Beaver in Model.Beavers)
+    {
+        <div class="div-full-width">
+            <div class="thumbnail">
+                <div class="caption">
+                    <span class="inline-half-width font-bold">
+                        @Beaver.FirstName  @Beaver.LastName
+                    </span>
+                    <span class="details">
+                        <a asp-controller="Home" asp-action="Details" asp-route-id="@Beaver.Id" class="btn btn-success btn-xs" role="button">Details</a>
+                    </span>
+                    <span>
+                        <a asp-controller="Member" asp-action="Edit" asp-route-id="@Beaver.Id" class="btn btn-warning btn-xs" role="button">Edit (log-in required)</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="div-full-width">
+    @*   if user is logged-in, show the Log Out button*@
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm"
+                  method="post">
+            <div class="btn-margin">
+                <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger">Log Out</a>
+            </div>
+        </form>
+
+        <div class="btn-margin">
+            <a asp-controller="Home" asp-action="Enquire" class="btn btn-success">Enquire</a>
+        </div>
+        <div class="btn-margin">
+            <a asp-controller="Member" asp-action="Feedback" class="btn btn-warning">Feedback</a>
+        </div>
+    }
+    @*   but if user is not logged-in, show the Log In and Register buttons    *@
+    else
+    {
+        <div class="btn-margin">
+            <a asp-controller="Account" asp-action="LogIn" class="btn btn-warning">Log In</a>
+        </div>
+        <div class="btn-margin">
+            @*<a asp-controller="Account" asp-action="Register" class="btn btn-primary" disabled="disabled">Register</a>*@
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary" disabled="disabled">Register</a>
+        </div>
+        <div class="btn-margin">
+            <a asp-controller="Home" asp-action="Enquire" class="btn btn-success">Enquire (log-in not required)</a>
+        </div>
+        <div class="btn-margin">
+            <a asp-controller="Member" asp-action="Feedback" class="btn btn-warning">Feedback (log-in required)</a>
+        </div>
+    }
+</div>

@@ -1,0 +1,41 @@
+﻿@model BeaversDirectory.Models.Enquire
+
+@{
+    ViewData["Title"] = "Enquire";
+}
+
+<h3 class="text-center">Please enter your details and message below</h3>
+
+
+<form asp-action="Enquire" method="post" class="form-horizontal" role="form">
+    <div class="form-group">
+        <label asp-for="Name" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Message" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <textarea asp-for="Message" class="form-control"></textarea>
+            <span asp-validation-for="Message" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-success" value="Send enquiry" />
+        </div>
+    </div>
+
+</form>

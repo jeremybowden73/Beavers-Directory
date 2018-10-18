@@ -1,0 +1,41 @@
+﻿@model BeaversDirectory.Models.Feedback
+
+@{
+    ViewData["Title"] = "Feedback";
+}
+
+<h3 class="text-center">Logged-in users only - Please enter your details and Feedback</h3>
+
+
+<form asp-action="Feedback" method="post" class="form-horizontal" role="form">
+    <div class="form-group">
+        <label asp-for="Name" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FeedbackMessage" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <textarea asp-for="FeedbackMessage" class="form-control"></textarea>
+            <span asp-validation-for="FeedbackMessage" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-success" value="Send Feedback now" />
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,39 @@
+﻿@model BeaversDirectory.Models.Beaver
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h3 class="text-center">Details for @Model.FirstName @Model.LastName</h3>
+
+
+
+<div>
+    <div class="thumbnail no-border">
+        <div class="caption">
+            <span class="inline-half-width font-bold">First Name</span>
+            <span class="inline-half-width">@Model.FirstName</span>
+        </div>
+        <div class="caption">
+            <span class="inline-half-width font-bold">Last Name</span>
+            <span class="inline-half-width">@Model.LastName</span>
+        </div>
+        <div class="caption">
+            <span class="inline-half-width font-bold">Town</span>
+            <span class="inline-half-width">@Model.Town</span>
+        </div>
+        <div class="caption">
+            <span class="inline-half-width font-bold">Date of birth</span>
+            <span class="inline-half-width">@Model.Dob</span>
+        </div>
+        <div class="caption">
+            <span class="inline-half-width font-bold">Lodge</span>
+            <span class="inline-half-width">@Model.Lodge</span>
+        </div>
+        <div class="caption">
+            <span class="inline-half-width font-bold">Lodge Leader?</span>
+            <span class="inline-half-width">@Model.IsLodgeLeader</span>
+        </div>
+    </div>
+</div>
+
