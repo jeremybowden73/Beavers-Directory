@@ -27,12 +27,10 @@ namespace BeaversDirectory
                     var context = services.GetRequiredService<AppDbContext>();
                     DbInitializer.Seed(context);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    // var logger = services.GetRequiredService<ILogger<Program>>();
-                    // logger.LogError(ex, "An error occurred seeding the DB.");
-                    //
-                    // I assume you'd also need to include "Logging" in the appsettings.json config file
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred seeding the DB.");
                 }
             }
 
