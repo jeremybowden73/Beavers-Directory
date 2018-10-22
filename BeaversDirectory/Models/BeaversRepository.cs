@@ -30,7 +30,7 @@ namespace BeaversDirectory.Models
 
         public void UpdateBeaver(Beaver beaver)
         {
-            // update the 
+            // update the Beaver model in the db that has been passed to this method
             _appDbContext.Beavers.Update(beaver);
             _appDbContext.SaveChanges();
         }

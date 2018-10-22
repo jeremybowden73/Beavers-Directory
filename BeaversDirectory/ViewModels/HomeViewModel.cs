@@ -13,5 +13,8 @@ namespace BeaversDirectory.ViewModels
 
         // generate a Title
         public string Title { get; set; }
+
+        // property for which user is logged in
+        public string User { get; set; }
     }
 }

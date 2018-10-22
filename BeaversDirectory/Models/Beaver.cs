@@ -27,7 +27,7 @@ namespace BeaversDirectory.Models
 
         public bool IsLodgeLeader { get; set; }
         
-        public string ParentEmail { get; set; }
+        public string ParentUserName { get; set; }
 
         public string ParentPassword { get; set; }
 
