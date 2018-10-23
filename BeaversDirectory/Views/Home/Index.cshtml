@@ -24,32 +24,35 @@
         <div class="div-full-width">
             <div class="thumbnail">
                 <div class="caption">
-                    <span class="inline-half-width font-bold">
+                    <div class="font-bold">
                         @Beaver.FirstName  @Beaver.LastName
-                    </span>
+                    </div>
 
-                    <span class="details">
-                        <a asp-controller="Home" asp-action="Details" asp-route-id="@Beaver.Id" class="btn btn-success btn-xs" role="button">Details</a>
-                    </span>
+                    <div>
+                    <div class="span-button">
+                        <a asp-controller="Home" asp-action="Details" asp-route-id="@Beaver.Id" class="btn btn-success" role="button">Details</a>
+                    </div>
 
                     @*   if User for this Beaver is logged-in, allow Edit*@
                     @if (Beaver.ParentUserName == Model.User)
                     {
-                        <span>
-                            <a asp-controller="Member" asp-action="Edit" asp-route-id="@Beaver.Id" class="btn btn-warning btn-xs" role="button">Edit</a>
-                        </span>
+                        <dic class="span-button">
+                            <a asp-controller="Member" asp-action="Edit" asp-route-id="@Beaver.Id" class="btn btn-warning" role="button">Edit</a>
+                        </dic>
                     }
                     else
                     {
-                        <span>
-                            <a asp-controller="Home" asp-action="Index" class="btn btn-warning btn-xs" role="button">Edit (log-in required)</a>
-                        </span>
+                        <div class="span-button">
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-danger">Edit (log-in required)</a>
+                        </div>
                     }
+                    </div>
                 </div>
             </div>
         </div>
     }
 </div>
+<br>
 <div class="div-full-width">
     @*   if User is logged-in, show the Log Out button*@
     @if (SignInManager.IsSignedIn(User))
@@ -82,7 +85,7 @@
             <a asp-controller="Home" asp-action="Enquire" class="btn btn-success">Enquire (log-in not required)</a>
         </div>
         <div class="btn-margin">
-            <a asp-controller="Member" asp-action="Feedback" class="btn btn-warning">Feedback (log-in required)</a>
+            <a asp-controller="Member" asp-action="Feedback" class="btn btn-danger">Feedback (log-in required)</a>
         </div>
     }
 </div>
