@@ -35,11 +35,11 @@ namespace BeaversDirectory
             //    options.MinimumSameSitePolicy = SameSiteMode.None;
             //});
 
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<BeaversDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // add the default identity system configuration, passing in the User and Role type that we want to use.
-            // AppDbContext is used to store the information for a user
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            // BeaversDbContext is used to store the information for a user
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<BeaversDbContext>();
 
             // when an instance of IBeaversRepository is requested via Dependency Injection,
             // a new BeaversRepository will be returned

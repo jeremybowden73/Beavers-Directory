@@ -7,9 +7,9 @@ namespace BeaversDirectory.Models
 {
     public class DbInitializer
     {
-        public static void Seed(AppDbContext context)
+        public static void Seed(BeaversDbContext context)
         {
-            // if the AppDbContext that was passed to it is empty, initialize it with this data
+            // if the BeaversDbContext that was passed to it is empty, initialize it with this data
             if (!context.Beavers.Any())
             {
                 context.AddRange

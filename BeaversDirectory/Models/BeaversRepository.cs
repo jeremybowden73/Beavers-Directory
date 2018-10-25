@@ -7,32 +7,32 @@ namespace BeaversDirectory.Models
 {
     public class BeaversRepository : IBeaversRepository
     {
-        private readonly AppDbContext _appDbContext;
+        private readonly BeaversDbContext _beaversDbContext;
 
         // constructor injection
-        public BeaversRepository(AppDbContext appDbContext)
+        public BeaversRepository(BeaversDbContext beaversDbContext)
         {
-            _appDbContext = appDbContext;
+            _beaversDbContext = beaversDbContext;
         }
 
         public IEnumerable<Beaver> AllBeavers()
         {
             // return the Pies collection from the context
-            return _appDbContext.Beavers;
+            return _beaversDbContext.Beavers;
         }
 
         public Beaver GetBeaverById(int beaverId)
         {
             // return the first object from the collection Beavers which has the Id that is passed
             // in to the method, or if there isn't one, return a 'default'
-            return _appDbContext.Beavers.FirstOrDefault(p => p.Id == beaverId);
+            return _beaversDbContext.Beavers.FirstOrDefault(p => p.Id == beaverId);
         }
 
         public void UpdateBeaver(Beaver beaver)
         {
             // update the Beaver model in the db that has been passed to this method
-            _appDbContext.Beavers.Update(beaver);
-            _appDbContext.SaveChanges();
+            _beaversDbContext.Beavers.Update(beaver);
+            _beaversDbContext.SaveChanges();
         }
     }
 }

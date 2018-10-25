@@ -24,7 +24,7 @@ namespace BeaversDirectory
 
                 try
                 {
-                    var context = services.GetRequiredService<AppDbContext>();
+                    var context = services.GetRequiredService<BeaversDbContext>();
                     DbInitializer.Seed(context);
                 }
                 catch (Exception ex)

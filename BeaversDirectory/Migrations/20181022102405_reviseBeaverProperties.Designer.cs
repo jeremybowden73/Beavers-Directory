@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BeaversDirectory.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(BeaversDbContext))]
     [Migration("20181022102405_reviseBeaverProperties")]
     partial class reviseBeaverProperties
     {

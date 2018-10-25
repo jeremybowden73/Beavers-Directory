@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BeaversDirectory.Migrations
 {
     [DbContext(typeof(BeaversDbContext))]
-    [Migration("20181017193829_FeedbackMessageAdded")]
-    partial class FeedbackMessageAdded
+    [Migration("20181025055136_Update")]
+    partial class Update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,9 +41,9 @@ namespace BeaversDirectory.Migrations
                     b.Property<string>("Lodge")
                         .IsRequired();
 
-                    b.Property<string>("ParentEmail");
-
                     b.Property<string>("ParentPassword");
+
+                    b.Property<string>("ParentUserName");
 
                     b.Property<string>("Town")
                         .IsRequired();

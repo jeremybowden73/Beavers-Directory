@@ -7,17 +7,17 @@ namespace BeaversDirectory.Models
 {
     public class EnquireRepository : IEnquireRepository
     {
-        private readonly AppDbContext _appDbContext;
+        private readonly BeaversDbContext _beaversDbContext;
 
-        public EnquireRepository(AppDbContext appDbContext)
+        public EnquireRepository(BeaversDbContext beaversDbContext)
         {
-            _appDbContext = appDbContext;
+            _beaversDbContext = beaversDbContext;
         }
 
         public void AddEnquire(Enquire enquire)
         {
-            _appDbContext.Enquires.Add(enquire);
-            _appDbContext.SaveChanges();
+            _beaversDbContext.Enquires.Add(enquire);
+            _beaversDbContext.SaveChanges();
         }
     }
 }

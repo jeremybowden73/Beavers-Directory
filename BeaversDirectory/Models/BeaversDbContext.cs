@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BeaversDirectory.Models
 {
-    public class AppDbContext : IdentityDbContext<IdentityUser>
+    public class BeaversDbContext : IdentityDbContext<IdentityUser>
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public BeaversDbContext(DbContextOptions<BeaversDbContext> options) : base(options)
         {
         }
 

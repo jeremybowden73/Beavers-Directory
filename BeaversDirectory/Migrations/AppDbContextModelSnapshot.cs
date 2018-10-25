@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BeaversDirectory.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(BeaversDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

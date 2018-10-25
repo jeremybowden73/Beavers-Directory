@@ -7,18 +7,18 @@ namespace BeaversDirectory.Models
 {
     public class FeedbackRepository : IFeedbackRepository
     {
-        private readonly AppDbContext _appDbContext;
+        private readonly BeaversDbContext _beaversDbContext;
 
-        public FeedbackRepository(AppDbContext appDbContext)
+        public FeedbackRepository(BeaversDbContext beaversDbContext)
         {
-            _appDbContext = appDbContext;
+            _beaversDbContext = beaversDbContext;
         }
 
 
         public void AddFeedback(Feedback feedback)
         {
-            _appDbContext.Feedbacks.Add(feedback);
-            _appDbContext.SaveChanges();
+            _beaversDbContext.Feedbacks.Add(feedback);
+            _beaversDbContext.SaveChanges();
         }
     }
 }
