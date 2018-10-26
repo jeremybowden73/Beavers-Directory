@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <ApplicationIcon>wwwroot\beavers.ico</ApplicationIcon>
+    <UserSecretsId>df78954b-f581-401a-9ddd-789fc1b59e60</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

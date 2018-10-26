@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using BeaversDirectory.Models;
+using System.Reflection;
 
 namespace BeaversDirectory
 {
@@ -37,8 +38,14 @@ namespace BeaversDirectory
             host.Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            //https://docs.microsoft.com/en-us/aspnet/core/fundamentals/environments?view=aspnetcore-2.1
+            var assemblyName = typeof(Startup).GetTypeInfo().Assembly.FullName;
+
+            return WebHost.CreateDefaultBuilder(args)
+                .CaptureStartupErrors(true)
+                .UseStartup(assemblyName);
+        }
     }
 }

@@ -16,9 +16,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BeaversDirectory
 {
-    public class Startup
+    public class StartupDevelopment
     {
-        public Startup(IConfiguration configuration)
+        public StartupDevelopment(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -28,16 +28,8 @@ namespace BeaversDirectory
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.Configure<CookiePolicyOptions>(options =>
-            //{
-            //    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-            //    options.CheckConsentNeeded = context => true;
-            //    options.MinimumSameSitePolicy = SameSiteMode.None;
-            //});
-
-            services.AddDbContext<BeaversDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.BuildServiceProvider().GetService<BeaversDbContext>().Database.Migrate();
-
+            services.AddDbContext<BeaversDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevelopmentConnection")));
+            
             // add the default identity system configuration, passing in the User and Role type that we want to use.
             // BeaversDbContext is used to store the information for a user
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<BeaversDbContext>();
