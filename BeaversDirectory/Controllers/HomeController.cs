@@ -56,7 +56,9 @@ namespace BeaversDirectory.Controllers
         {
             var beaver = _beaversRepository.GetBeaverById(id);
             if (beaver == null)
+            {
                 return NotFound();
+            }
 
             return View(beaver);
         }
