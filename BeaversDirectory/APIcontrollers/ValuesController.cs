@@ -27,61 +27,70 @@ namespace BeaversDirectory.APIcontrollers
 
         // GET: api/values/
         // returns the complete List of Beaver objects in the db, but in simplified form (sensitive data omitted)
+        //[HttpGet]
+        //public ActionResult<List<BeaverLiteAPI>> GetAll()
+        //{
+        //    var allBeavers = _beaversRepository.AllBeavers().OrderBy(b => b.Id).ToList();
+
+        //    if (allBeavers == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    // BeaverAPI is a simplified version of Beaver that is suitable for serving from
+        //    // the API (i.e. does not contain Toen or DOB information)
+        //    List<BeaverLiteAPI> beavers = new List<BeaverLiteAPI>();
+
+        //    // for each Beaver in allBeavers, create a BeaverAPI object (by populating
+        //    // it with data from the Beaver object) then add it to the List "beavers" 
+        //    for (int i = 0; i < allBeavers.Count; i++)
+        //    {
+        //        BeaverLiteAPI nextBeaverToAdd = new BeaverLiteAPI
+        //        {
+        //            FirstName = allBeavers[i].FirstName,
+        //            LastName = allBeavers[i].LastName,
+        //            Lodge = allBeavers[i].Lodge,
+        //            IsLodgeLeader = allBeavers[i].IsLodgeLeader
+        //        };
+
+        //        beavers.Add(nextBeaverToAdd);
+        //    }
+
+        //    return beavers;
+        //}
+
+
+        // GET: api/values/?querystring-options
         [HttpGet]
-        public ActionResult<List<BeaverLiteAPI>> GetAll()
+        public ActionResult<BeaverMoreAPI> Get(string FirstName, string LastName)
         {
             var allBeavers = _beaversRepository.AllBeavers().OrderBy(b => b.Id).ToList();
 
-            if (allBeavers == null)
+            // create a list of all Beaver objects that match the "FirstName"
+            // and "LastName" values in the supplied querystring
+            List<Beaver> lastnameMatches = allBeavers.FindAll(x => (x.FirstName == FirstName)
+                    && (x.LastName == LastName));
+
+            if (lastnameMatches == null)
             {
                 return NotFound();
             }
 
-            // BeaverAPI is a simplified version of Beaver that is suitable for serving from
-            // the API (i.e. does not contain Toen or DOB information)
-            List<BeaverLiteAPI> beavers = new List<BeaverLiteAPI>();
-
-            // for each Beaver in allBeavers, create a BeaverAPI object (by populating
-            // it with data from the Beaver object) then add it to the List "beavers" 
-            for (int i = 0; i < allBeavers.Count; i++)
+            if (lastnameMatches.Count() > 1)
             {
-                BeaverLiteAPI nextBeaverToAdd = new BeaverLiteAPI
-                {
-                    FirstName = allBeavers[i].FirstName,
-                    LastName = allBeavers[i].LastName,
-                    Lodge = allBeavers[i].Lodge,
-                    IsLodgeLeader = allBeavers[i].IsLodgeLeader
-                };
-
-                beavers.Add(nextBeaverToAdd);
+                return BadRequest();
             }
 
-            return beavers;
-        }
-
-
-        // GET: api/values/{LastName}
-        // only returns the first object the the Beavers list that matches the supplied LastName
-        [HttpGet("{lastname}")]
-        public ActionResult<BeaverMoreAPI> Get(string lastname)
-        {
-            var allBeavers = _beaversRepository.AllBeavers().OrderBy(b => b.Id).ToList();
-
-            var result = allBeavers.Find(x => x.LastName == lastname);
-
-            if (result == null)
-            {
-                return NotFound();
-            }
+            Beaver foundBeaver = lastnameMatches[0];
 
             BeaverMoreAPI beaver = new BeaverMoreAPI
             {
-                FirstName = result.FirstName,
-                LastName = result.LastName,
-                Town = result.Town,
-                Dob = result.Dob,
-                Lodge = result.Lodge,
-                IsLodgeLeader = result.IsLodgeLeader
+                FirstName = foundBeaver.FirstName,
+                LastName = foundBeaver.LastName,
+                Town = foundBeaver.Town,
+                Dob = foundBeaver.Dob,
+                Lodge = foundBeaver.Lodge,
+                IsLodgeLeader = foundBeaver.IsLodgeLeader
             };
 
             return beaver;
