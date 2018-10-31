@@ -17,7 +17,7 @@ namespace BeaversDirectory.Models
 
         public IEnumerable<Beaver> AllBeavers()
         {
-            // return the Pies collection from the context
+            // return the Beavers collection from the context
             return _beaversDbContext.Beavers;
         }
 
