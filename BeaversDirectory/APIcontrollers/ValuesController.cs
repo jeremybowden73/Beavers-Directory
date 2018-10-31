@@ -25,14 +25,20 @@ namespace BeaversDirectory.APIcontrollers
 
         // define routes
 
-        // GET: api/<controller>
+        // GET: api/values/
+        // returns the complete List of Beaver objects in the db, but in simplified form (sensitive data omitted)
         [HttpGet]
         public ActionResult<List<BeaverLiteAPI>> GetAll()
         {
             var allBeavers = _beaversRepository.AllBeavers().OrderBy(b => b.Id).ToList();
 
+            if (allBeavers == null)
+            {
+                return NotFound();
+            }
+
             // BeaverAPI is a simplified version of Beaver that is suitable for serving from
-            // the API (i.e. does not contain private information)
+            // the API (i.e. does not contain Toen or DOB information)
             List<BeaverLiteAPI> beavers = new List<BeaverLiteAPI>();
 
             // for each Beaver in allBeavers, create a BeaverAPI object (by populating
@@ -53,17 +59,32 @@ namespace BeaversDirectory.APIcontrollers
             return beavers;
         }
 
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public ActionResult<Beaver> Get(int id)
+
+        // GET: api/values/{LastName}
+        // only returns the first object the the Beavers list that matches the supplied LastName
+        [HttpGet("{lastname}")]
+        public ActionResult<BeaverMoreAPI> Get(string lastname)
         {
-            var beaver = _beaversRepository.GetBeaverById(id);
-            if (beaver == null)
+            var allBeavers = _beaversRepository.AllBeavers().OrderBy(b => b.Id).ToList();
+
+            var result = allBeavers.Find(x => x.LastName == lastname);
+
+            if (result == null)
+            {
                 return NotFound();
+            }
+
+            BeaverMoreAPI beaver = new BeaverMoreAPI
+            {
+                FirstName = result.FirstName,
+                LastName = result.LastName,
+                Town = result.Town,
+                Dob = result.Dob,
+                Lodge = result.Lodge,
+                IsLodgeLeader = result.IsLodgeLeader
+            };
 
             return beaver;
         }
-
-
     }
 }
