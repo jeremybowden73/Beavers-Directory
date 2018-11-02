@@ -31,7 +31,7 @@ nav {
 }
 
 .navbar-inverse {
-    background-color: lightblue;
+    background-color: #825b14;
 }
 
 .navbar-fixed-top {
@@ -40,17 +40,30 @@ nav {
 
 .navbar-inverse .navbar-brand {
     padding: 0;
-    color: darkblue;
-    font-size: 2.7rem;
+    font-family: 'Fredoka One', cursive;
+    color: #fff1d8;
+    font-size: 3rem;
     height: 0;
     text-align: center;
 }
 
+.demo-info {
+    width: 90%;
+    margin: 15px auto;
+}
+
 .info-text {
-    color: red;
-    font-style: italic;
-    margin-top: 10px;
-    font-size: 20px;
+    color: #071884;
+    padding: 0 5px 0 25%;
+    font-size: 2rem;
+    text-align: left;
+    font-family: 'Boogaloo', cursive;
+}
+
+.names-text {
+    font-family: 'Boogaloo', cursive;
+    font-size: 3rem;
+    letter-spacing: 0.15rem;
 }
 
 .div-full-width {
@@ -75,14 +88,32 @@ nav {
 }
 
 .word-emphasis {
-    padding-left: 0.5rem;
-    font-weight: bold;
+    padding-left: 20px;
+    letter-spacing: 0.15rem;
+    color: #ffa81e;
 }
 
 .inline-half-width {
     display: inline-block;
     width: 49%;
 }
+
+.responsive-image {
+    width: 15%;
+    height: auto;
+}
+
+.responsive-image-small {
+    width: 20%;
+    height: 100%;
+    object-fit: contain;
+    padding-top: 5px;
+}
+
+.divMarginTop {
+    margin-top: 10%;
+}
+
 
 
 
@@ -91,6 +122,12 @@ nav {
   .navbar > .container-fluid .navbar-brand {
     margin-left: 0;
   }
+}
+
+@media (min-width: 768px) {
+    .navbar-header {
+        float: none;
+    }
 }
 
 

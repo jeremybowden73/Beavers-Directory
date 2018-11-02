@@ -10,7 +10,15 @@
     ViewData["Title"] = "Home";
 }
 
-<h3 class="text-center">@Model.Title</h3>
+<div class="demo-info">
+    <span><img src="~/billy.gif" class="responsive-image-small pull-left" /></span>
+    <div class="info-text">
+    Please note...<br />
+    Registration is disabled for this demo, but you can log in (using the Log In button below the list of Beavers) as a parent of the first child in the list, whose name should be Adam Axelrod.<br />
+    <span>USERNAME:  </span><span class="word-emphasis">parent</span><br />
+    <span>PASSWORD:  </span><span class="word-emphasis">DemoPass18!</span><br />
+    </div>
+</div>
 
 @*   if user is logged-in, show the User name*@
 @if (SignInManager.IsSignedIn(User))
@@ -18,13 +26,13 @@
     <h3 class="text-center">Logged in as: <span class="word-emphasis info-text">@Model.User</span></h3>
 }
 
-<div>
+<div class="divMarginTop">
     @foreach (var Beaver in Model.Beavers)
     {
         <div class="div-full-width">
             <div class="thumbnail">
                 <div class="caption">
-                    <div class="font-bold">
+                    <div class="font-bold names-text">
                         @Beaver.FirstName  @Beaver.LastName
                     </div>
 
