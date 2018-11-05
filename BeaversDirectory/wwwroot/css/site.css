@@ -49,14 +49,14 @@ nav {
     padding: 0;
     font-family: 'Fredoka One', cursive;
     color: #fff1d8;
-    font-size: 3rem;
+    font-size: 2.66rem;
     height: 0;
-    text-align: center;
+    width: 100%;
 }
 
 .demo-info {
     width: 90%;
-    margin: 15px auto;
+    margin: 15px auto 80px;
 }
 
 .info-text {
@@ -97,7 +97,7 @@ nav {
 .word-emphasis {
     padding-left: 12px;
     letter-spacing: 0.15rem;
-    color: #ffa81e;
+    color: #825b14;
 }
 
 .inline-half-width {
@@ -108,17 +108,17 @@ nav {
 .responsive-image {
     width: 15%;
     height: auto;
+    padding-top: 3vh;
 }
 
 .responsive-image-small {
     width: 16%;
-    height: 100%;
     object-fit: contain;
     padding-top: 5px;
 }
 
 .divMarginTop {
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 
@@ -129,13 +129,16 @@ nav {
   .navbar > .container-fluid .navbar-brand {
     margin-left: 0;
   }
+
+  .navbar-header {
+      float: none;
+   }
 }
 
-@media (min-width: 768px) {
-    .navbar-header {
-        float: none;
+@media (min-width: 1000px) {
+    .responsive-image-small {
+        width: 12%;
     }
 }
-
 
 

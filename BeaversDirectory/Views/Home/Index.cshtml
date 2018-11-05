@@ -13,7 +13,7 @@
 <div class="demo-info">
     <span><img src="~/billy.gif" class="responsive-image-small pull-left" /></span>
     <div class="info-text">
-    Registration is disabled for this demo, but you can log in (using the Log In button below the list of Beavers) as a parent of the first child in the list, whose name should be Adam Axelrod.<br />
+    Registration is disabled for this demo, but you can log in (using the Log In button below the list of Beavers) as a parent of "Adam" (who should be the first name in the list).<br />
     <span>USERNAME:  </span><span class="word-emphasis">parent</span><br />
     <span>PASSWORD:  </span><span class="word-emphasis">DemoPass18!</span><br />
     </div>
@@ -24,6 +24,44 @@
 {
     <h3 class="text-center">Logged in as: <span class="word-emphasis info-text">@Model.User</span></h3>
 }
+
+    <div class="div-full-width text-center">
+        @*   if User is logged-in, show the Log Out button*@
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm"
+                  method="post">
+                <div class="btn-margin">
+                    <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger">Log Out</a>
+                </div>
+            </form>
+
+            <div class="btn-margin">
+                <a asp-controller="Home" asp-action="Enquire" class="btn btn-success">Enquire</a>
+            </div>
+            <div class="btn-margin">
+                <a asp-controller="Member" asp-action="Feedback" class="btn btn-warning">Feedback</a>
+            </div>
+        }
+        @*   but if User is not logged-in, show the Log In and Register buttons    *@
+        else
+        {
+            <div class="btn-margin">
+                <a asp-controller="Account" asp-action="LogIn" class="btn btn-warning">Log In</a>
+            </div>
+            <div class="btn-margin">
+                @*<a asp-controller="Account" asp-action="Register" class="btn btn-primary">Register</a>*@
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary" disabled="disabled">Register</a>
+            </div>
+            <div class="btn-margin">
+                <a asp-controller="Home" asp-action="Enquire" class="btn btn-success">Enquire (log-in not required)</a>
+            </div>
+            <div class="btn-margin">
+                <a asp-controller="Member" asp-action="Feedback" class="btn btn-danger btn-opaque">Feedback (log-in required)</a>
+            </div>
+        }
+    </div>
+
 
 <div class="divMarginTop">
     @foreach (var Beaver in Model.Beavers)
@@ -43,14 +81,14 @@
                     @*   if User for this Beaver is logged-in, allow Edit*@
                     @if (Beaver.ParentUserName == Model.User)
                     {
-                        <dic class="span-button">
+                        <div class="span-button">
                             <a asp-controller="Member" asp-action="Edit" asp-route-id="@Beaver.Id" class="btn btn-warning" role="button">Edit</a>
-                        </dic>
+                        </div>
                     }
                     else
                     {
                         <div class="span-button">
-                            <a asp-controller="Home" asp-action="Index" class="btn btn-danger btn-opaque">Edit (log-in required)</a>
+                            <a asp-controller="Account" asp-action="Login" class="btn btn-danger btn-opaque">Edit (log-in required)</a>
                         </div>
                     }
                     </div>
@@ -60,39 +98,3 @@
     }
 </div>
 <br>
-<div class="div-full-width">
-    @*   if User is logged-in, show the Log Out button*@
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <form asp-area="" asp-controller="Account" asp-action="Logout" id="logoutForm"
-              method="post">
-            <div class="btn-margin">
-                <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-danger">Log Out</a>
-            </div>
-        </form>
-
-        <div class="btn-margin">
-            <a asp-controller="Home" asp-action="Enquire" class="btn btn-success">Enquire</a>
-        </div>
-        <div class="btn-margin">
-            <a asp-controller="Member" asp-action="Feedback" class="btn btn-warning">Feedback</a>
-        </div>
-    }
-    @*   but if User is not logged-in, show the Log In and Register buttons    *@
-    else
-    {
-        <div class="btn-margin">
-            <a asp-controller="Account" asp-action="LogIn" class="btn btn-warning">Log In</a>
-        </div>
-        <div class="btn-margin">
-            @*<a asp-controller="Account" asp-action="Register" class="btn btn-primary">Register</a>*@
-            <a asp-controller="Home" asp-action="Index" class="btn btn-primary" disabled="disabled">Register</a>
-        </div>
-        <div class="btn-margin">
-            <a asp-controller="Home" asp-action="Enquire" class="btn btn-success">Enquire (log-in not required)</a>
-        </div>
-        <div class="btn-margin">
-            <a asp-controller="Member" asp-action="Feedback" class="btn btn-danger btn-opaque">Feedback (log-in required)</a>
-        </div>
-    }
-</div>
