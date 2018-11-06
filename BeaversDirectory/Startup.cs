@@ -50,7 +50,13 @@ namespace BeaversDirectory
 
             services.AddTransient<IEnquireRepository, EnquireRepository>();
 
-            services.AddCors();
+            // set the status of CORS to allow any origin to send and receive XMLHttpRequests (AJAX).
+            // This is then implemented only for the API controller by the EnableCors directive in ValuesController.cs
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyOrigin",
+                    builder => builder.AllowAnyOrigin());
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -80,7 +86,7 @@ namespace BeaversDirectory
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
-            app.UseCors();
+            
 
             app.UseMvc(routes =>
             {

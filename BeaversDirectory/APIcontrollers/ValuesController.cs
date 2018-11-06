@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BeaversDirectory.APIcontrollers
 {
     [Route("api/values")]
-    //[ApiController]
+    [ApiController]
     [EnableCors("AllowAnyOrigin")]
     public class ValuesController : Controller
     {
@@ -109,9 +109,6 @@ namespace BeaversDirectory.APIcontrollers
 
                 beaverNames.Add(nextBeaverName);
             }
-
-
-
 
             return beaverNames;
         }

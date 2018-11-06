@@ -2,6 +2,76 @@
     ViewData["Title"] = "API";
 }
 
-<h3 class="text-center">API Documentation</h3>
+<h3 class="text-center api-heading-text">API Documentation</h3>
 
+<h2>How To Use</h2>
+<p>Beavers Directory API responds to requests in JSON format. All requests to the API start with this URL:</p>
+<pre class="prettyprint">
+https://beavers-directory.azurewebsites.net/api/values/
+</pre>
+<br />
+<p>You can use AJAX to call the API; for example the native JavaScript method getJSON works well.</p>
+<pre class="prettyprint">
+$.getJSON('https://beavers-directory.azurewebsites.net/api/values/', function (apiData) {
+    console.log(apiData)
+});
+</pre>
 
+<p>This example yields an array of JSON objects:</p>
+<pre class="prettyprint">
+[
+    {
+        "firstName": "Adam",
+        "lastName": "Axelrod",
+        "town": "Houghton",
+        "lodge": "Yellow",
+        "isLodgeLeader": false
+    },
+    {
+        "firstName": "Bert",
+        "lastName": "Beaverboy",
+        "town": "Billesdon",
+        "lodge": "Red",
+        "isLodgeLeader": true
+    }
+]
+</pre>
+<br />
+<h2>Requesting Beavers By Attribute</h2>
+<p>By adding a query string "?" to the end of the URL you can request the details of only the Beavers that meet specific criteria.<br />
+    You can specify any combination of the following by separating them with "&"</p>
+<ul>
+    <li>FirstName</li>
+    <li>LastName</li>
+    <li>Town</li>
+    <li>Lodge</li>
+    <li>Leader</li>
+</ul>
+
+<p>For example, this URL</p>
+<pre class="prettyprint">
+https://beavers-directory.azurewebsites.net/api/values/?LastName=Axelrod&Lodge=Red
+</pre>
+<p>Will return only the Beavers in the directory that have the last name Axelrod AND are in Red lodge.</p>
+<br />
+<p>This URL will cause the API to respond with all Beavers that are designated True for Lodge Leader:</p>
+<pre class="prettyprint">
+https://beavers-directory.azurewebsites.net/api/values/?Leader=true
+</pre>
+<br />
+<p>Omitting the query string, as in the first example under 'How To Use', will receive all data for all Beavers in the Directory.</p>
+<p>Caution!<br />If any attribute name or search term is not found in the directory (for example a name is misspelled) the API will return nothing.</p>
+<br />
+<h2>Requesting All Beavers (names only)</h2>
+<p>To receive an array of all Beavers names in the Directory, in the format</p>
+<pre class="prettyprint">
+[
+    { "name" : "LastName Firstname" },
+    { "name" : "LastName Firstname" }
+]
+</pre>
+<p>add /Names to the URL:</p>
+<pre class="prettyprint">
+https://beavers-directory.azurewebsites.net/api/values/Names/
+</pre>
+<br /><br />
