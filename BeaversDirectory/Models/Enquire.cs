@@ -10,7 +10,7 @@ namespace BeaversDirectory.Models
     public class Enquire
     {
         // apply [BindNever] so the built-in error-checking of the feedback form values (due
-        // to 'Model Binding' excludes this property  
+        // to 'Model Binding') excludes this property  
         [BindNever]
         public int EnquireId { get; set; }
 

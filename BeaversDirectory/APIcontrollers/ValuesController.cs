@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BeaversDirectory.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,7 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace BeaversDirectory.APIcontrollers
 {
     [Route("api/values")]
-    [ApiController]
+    //[ApiController]
+    [EnableCors("AllowAnyOrigin")]
     public class ValuesController : Controller
     {
         private readonly IBeaversRepository _beaversRepository;

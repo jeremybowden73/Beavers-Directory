@@ -50,6 +50,8 @@ namespace BeaversDirectory
 
             services.AddTransient<IEnquireRepository, EnquireRepository>();
 
+            services.AddCors();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -78,6 +80,7 @@ namespace BeaversDirectory
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
+            app.UseCors();
 
             app.UseMvc(routes =>
             {

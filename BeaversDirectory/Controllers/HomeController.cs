@@ -30,7 +30,7 @@ namespace BeaversDirectory.Controllers
         //
         // define routes
 
-        public IActionResult Index(/*LoginViewModel loginViewModel*/)
+        public IActionResult Index()
         {
             var beavers = _beaversRepository.AllBeavers().OrderBy(b => b.Id);
 
@@ -84,6 +84,11 @@ namespace BeaversDirectory.Controllers
         }
 
         public IActionResult EnquireComplete()
+        {
+            return View();
+        }
+
+        public IActionResult ApiDocs()
         {
             return View();
         }
