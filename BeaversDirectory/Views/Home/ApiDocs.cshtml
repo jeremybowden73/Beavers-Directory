@@ -10,32 +10,18 @@
 https://beavers-directory.azurewebsites.net/api/values/
 </pre>
 <br />
-<p>You can use AJAX to call the API; for example the native JavaScript method getJSON works well.</p>
+<p>You can use AJAX to call the API; for example the jQuery method getJSON works well.</p>
+<div>
 <pre class="prettyprint">
 $.getJSON('https://beavers-directory.azurewebsites.net/api/values/', function (apiData) {
     console.log(apiData)
 });
 </pre>
+</div>
 
-<p>This example yields an array of JSON objects:</p>
-<pre class="prettyprint">
-[
-    {
-        "firstName": "Adam",
-        "lastName": "Axelrod",
-        "town": "Houghton",
-        "lodge": "Yellow",
-        "isLodgeLeader": false
-    },
-    {
-        "firstName": "Bert",
-        "lastName": "Beaverboy",
-        "town": "Billesdon",
-        "lodge": "Red",
-        "isLodgeLeader": true
-    }
-]
-</pre>
+<p>This request yields a JSON object containing all data for all Beavers in the Directory.<br />
+    <span><button class="btn btn-brown" id="button-all-data">Click</button></span> to send this request to the API right now; the resulting object will display below.</p>
+<pre class="prettyprint" id="api-data"></pre>
 <br />
 <h2>Requesting Beavers By Attribute</h2>
 <p>By adding a query string "?" to the end of the URL you can request the details of only the Beavers that meet specific criteria.<br />

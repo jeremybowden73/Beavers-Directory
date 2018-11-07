@@ -94,6 +94,20 @@ nav {
     margin: 20px 0 10px;
 }
 
+.btn-brown {
+    background-color: #825b14;
+    color: #fff;
+}
+
+.btn-brown:hover {
+    color: #222;
+}
+
+#api-data {
+    height: 35vh;
+    display: none;
+}
+
 .word-emphasis {
     padding-left: 12px;
     letter-spacing: 0.15rem;
