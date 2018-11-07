@@ -4,6 +4,5 @@
         var userData = JSON.stringify(apiData, null, 4);
         $("#api-data").empty().text(userData);
         $("#api-data").show();
-        //$("#api-data").css("height", "30vh");
     });
 });
