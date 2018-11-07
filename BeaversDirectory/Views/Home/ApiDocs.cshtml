@@ -25,20 +25,20 @@ $.getJSON('https://beavers-directory.azurewebsites.net/api/values/', function (a
 <br />
 <h2>Requesting Beavers By Attribute</h2>
 <p>By adding a query string "?" to the end of the URL you can request the details of only the Beavers that meet specific criteria.<br />
-    You can specify any combination of the following by separating them with "&"</p>
-<ul>
-    <li>FirstName</li>
-    <li>LastName</li>
-    <li>Town</li>
-    <li>Lodge</li>
-    <li>Leader</li>
-</ul>
+    You can specify any combination of the following by separating them with "&"
+    <ul>
+        <li>FirstName</li>
+        <li>LastName</li>
+        <li>Town</li>
+        <li>Lodge</li>
+        <li>Leader</li>
+    </ul>
+</p>
 
-<p>For example, this URL</p>
+<p>For example, this URL will return only the Beavers in the directory that have the last name Axelrod AND are in Red lodge.</p>
 <pre class="prettyprint">
 https://beavers-directory.azurewebsites.net/api/values/?LastName=Axelrod&Lodge=Red
 </pre>
-<p>Will return only the Beavers in the directory that have the last name Axelrod AND are in Red lodge.</p>
 <br />
 <p>This URL will cause the API to respond with all Beavers that are designated True for Lodge Leader:</p>
 <pre class="prettyprint">
@@ -46,7 +46,13 @@ https://beavers-directory.azurewebsites.net/api/values/?Leader=true
 </pre>
 <br />
 <p>Omitting the query string, as in the first example under 'How To Use', will receive all data for all Beavers in the Directory.</p>
-<p>Caution!<br />If any attribute name or search term is not found in the directory (for example a name is misspelled) the API will return nothing.</p>
+<p>Caution...
+    <ul>
+        <li>If any attribute name or search term is not found in the directory (for example a name is misspelled) the API will return nothing.</li>
+        <li>Criteria and Search terms must be capitalized (FirstName Adam Leader are good; firstname adam leader are not good).</li>
+        <li>The Search term for Leader should be true or false.</li>
+    </ul>
+</p>
 <br />
 <h2>Requesting All Beavers (names only)</h2>
 <p>To receive an array of all Beavers names in the Directory, in the format</p>
